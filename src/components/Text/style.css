@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+body{
+  background-image: url('../../../public/background.svg');
+}
+
+.textContainer{
+  color: white;
+  font-family: 'Itim', cursive;
+}
+
+.textContainer__button{
+  border-radius: 10px;
+  background-color: #80006b;
+  border-style: none;
+  height: 31px;
+  color:white;
+  margin-top: 32px;
+  width: 22%;
+}
+
+.textContainer__button:hover{
+  background-color: #600080;
+}

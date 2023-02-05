@@ -1,0 +1,169 @@
+// color palette
+$skin: #382E2F;
+$dark-green: #A1B33D;
+$light-green: #DCDE7B;
+$seed: #7C3A13;
+$seed-border: #6A3111;
+$background: #B3A7B4;
+$highlight: #E0D8DE;
+$blush: #F0B5B3;
+
+body {
+	background: $background;
+
+	.container {
+		position: relative;
+		height: 300px;
+		width: 300px;
+		margin: auto;
+		margin-top: 12%;
+	}
+
+	// darker green layer + skin
+	.outer-layer {
+		background: $dark-green;
+		position: absolute;
+		height: 250px;
+		width: 200px;
+		top: 15px;
+		left: 40px;
+		border-radius: 60% 60% 60% 60% / 85% 85% 40% 40%;
+		border: 10px solid $skin;
+		animation: 1s linear infinite jump;
+
+		// inner light green layer
+		.inner-layer {
+			background: $light-green;
+			position: absolute;
+			height: 200px;
+			width: 150px;
+			top: 25px;
+			left: 25px;
+			border-radius: 60% 60% 60% 60% / 85% 85% 40% 40%;
+			box-shadow: 0 0 5px 5px $light-green;
+		}
+
+		// cute lil face
+		.face {
+			position: absolute;
+			height: 45px;
+			width: 80px;
+			top: 60px;
+			left: 60px;
+
+			// eyes
+			@mixin happy-eye() {
+				position: absolute;
+				height: 15px;
+				width: 15px;
+				top: 10px;
+				border-radius: 50%;
+				border: 3px solid;
+				border-color: $skin transparent transparent $skin;
+				transform: rotate(45deg);
+			}
+			.happy-eye-l {
+				@include happy-eye();
+				left: 5px;
+			}
+			.happy-eye-r {
+				@include happy-eye();
+				right: 5px;
+			}
+
+			// blush
+			@mixin blush() {
+				position: absolute;
+				background: $blush;
+				height: 5px;
+				width: 15px;
+				top: 25px;
+				border-radius: 50%;
+				box-shadow: 0 0 5px 3px $blush;
+			}
+			.blush-l {
+				@include blush();
+				left: 5px;
+			}
+			.blush-r {
+				@include blush();
+				right: 5px;
+			}
+
+			// smile
+			.smile {
+				position: absolute;
+				height: 20px;
+				width: 20px;
+				top: 15px;
+				left: 27px;
+				border-radius: 50%;
+				border: 3px solid;
+				border-color: transparent $skin $skin transparent;
+				transform: rotate(45deg);
+			}
+		}
+
+		// seed
+		.seed {
+			background: $seed;
+			position: absolute;
+			height: 90px;
+			width: 85px;
+			top: 105px;
+			left: 52.5px;
+			border-radius: 50% 50% 50% 50% / 70% 70% 40% 40%;
+			border: 5px solid $seed-border;
+
+			// seed highlight
+			.highlight {
+				background: $highlight;
+				position: absolute;
+				height: 65%;
+				width: 65%;
+				top: 25px;
+				left: 22px;
+				border-radius: 50% 50% 50% 50% / 70% 70% 40% 40%;
+				transform: rotate(-10deg);
+			}
+
+			.highlight-cover {
+				background: $seed;
+				position: absolute;
+				height: 80%;
+				width: 65%;
+				top: 15px;
+				left: 15px;
+				border-radius: 50% 50% 50% 50% / 70% 70% 40% 40%;
+				transform: rotate(5deg);
+			}
+		}
+	}
+
+	// shadow
+	.shadow {
+		position: absolute;
+		background: $skin;
+		height: 40px;
+		width: 220px;
+		top: 240px;
+		left: 40px;
+		border-radius: 50%;
+		box-shadow: 0 5px 5px 5px $skin;
+		z-index: -1;
+		animation: 1s linear infinite re-size;
+	}
+
+	// animations
+	@keyframes jump {
+		0% { top: 0 }
+		50% { top: -50px; transform: scaleY(1.1) }
+		100% { top: 0 }
+	}
+
+	@keyframes re-size {
+		0% { transform: scaleX(1) }
+		50% { transform: scaleX(.85) }
+		100% { transform: scaleX(1) }
+	}
+}
